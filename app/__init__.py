@@ -1,10 +1,11 @@
 from flask import Flask
-from config import Config
 from flask_redis import FlaskRedis
 from mockredis import MockRedis
 from oxr import OXR
-from app.rates import Rates
+
 from app.cli import register as register_cli
+from app.rates import Rates
+from config import Config
 
 
 def create_app(config_class=Config):

@@ -1,6 +1,6 @@
 import click
-from flask.cli import with_appcontext
 from flask import current_app
+from flask.cli import with_appcontext
 
 
 @click.command('update_rates')

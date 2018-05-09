@@ -1,18 +1,6 @@
 import pytest
 
-from app.rates import Rates, UnknownCurrencyException, LocalCacheOutdatedException
-from app import create_app
-from config import Config
-
-
-class TestConfig(Config):
-    TESTING = True
-    CURRENCIES = ['USD', 'EUR']
-
-
-@pytest.fixture
-def app():
-    return create_app(TestConfig)
+from app.rates import UnknownCurrencyException, LocalCacheOutdatedException
 
 
 def test_get_rate(app):
