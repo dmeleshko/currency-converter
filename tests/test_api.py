@@ -1,3 +1,6 @@
+from decimal import Decimal
+
+
 def test_currencies(client):
     response = client.get('/api/currencies')
     assert response.status_code == 200
@@ -11,7 +14,7 @@ def test_convert(client):
     assert response.content_type == 'application/json'
     assert response.json['status'] == 'error'
 
-    client.application.rates.update_rates({'USD': 1, 'EUR': 0.89, 'AUD': 2})
+    client.application.rates.update_rates({'USD': Decimal('1'), 'EUR': Decimal('0.89'), 'AUD': Decimal('2')})
     response = client.get('/api/convert/1/USD/EUR')
     assert response.status_code == 200
     assert response.content_type == 'application/json'

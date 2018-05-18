@@ -21,6 +21,9 @@ def create_app(config_class=Config):
     if app.config['OPENEXCHANGE_API_KEY']:
         app.rates_client = OXR(app.config['OPENEXCHANGE_API_KEY'])
 
+    from .util import DecimalConverter
+    app.url_map.converters['decimal'] = DecimalConverter
+
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix="/api")
 

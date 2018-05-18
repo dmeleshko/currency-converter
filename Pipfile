@@ -12,6 +12,7 @@ flask-redis = "*"
 python-dotenv = "*"
 oxr-client = "*"
 mockredispy = "*"
+simplejson = "*"
 
 
 [dev-packages]

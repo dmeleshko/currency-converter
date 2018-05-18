@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, current_app
-
+from decimal import Decimal
 bp = Blueprint('api', __name__)
 
 
@@ -13,8 +13,8 @@ def get_currencies():
 
 
 @bp.route("/convert/<int:amount>/<string:cur_from>/<string:cur_to>")
-@bp.route("/convert/<float:amount>/<string:cur_from>/<string:cur_to>")
-def convert(amount: float, cur_from: str, cur_to: str):
+@bp.route("/convert/<decimal:amount>/<string:cur_from>/<string:cur_to>")
+def convert(amount: Decimal, cur_from: str, cur_to: str):
     """Convert from one currency to another."""
     try:
         return jsonify({
